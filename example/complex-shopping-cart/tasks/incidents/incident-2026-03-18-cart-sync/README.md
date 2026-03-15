@@ -6,4 +6,5 @@ status: in_progress
 summary: "Incident: cart sync regression"
 estimate: "4h"
 ---
-Restore cart synchronization for active sessions.
+Cart contents not syncing between devices for logged-in users.
+Regression introduced in latest backend deploy.

@@ -6,4 +6,5 @@ status: in_progress
 summary: "Incident: payment failures"
 estimate: "6h"
 ---
-Investigate payment provider errors and apply mitigation.
+Payment provider returning elevated error rates starting 07:45 UTC.
+Approximately 12% of checkout attempts failing at payment step.

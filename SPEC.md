@@ -1,6 +1,6 @@
 # TSK Formal Spec (Draft)
 
-Version: 0.7.0
+Version: 0.10.0
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -409,6 +409,7 @@ These fields are available for SLA queries:
   - `task.summary`
   - `task.dependency` (matches any dependency path)
 - Iteration fields:
+  - `iteration.team` (team directory name)
   - `iteration.status` (custom status)
   - `iteration.status.category` (base category: `todo`, `in_progress`, `done`)
   - `iteration.start` (RFC3339)
@@ -432,6 +433,7 @@ These fields are available for SLA queries:
 - `task.path`: string (canonical path relative to `tasks/`)
 - `task.summary`: string
 - `task.dependency`: list of strings (canonical paths)
+- `iteration.team`: string (team directory name)
 - `iteration.status`: enum (custom status value)
 - `iteration.status.category`: enum (`todo`, `in_progress`, `done`)
 - `iteration.start`: datetime (RFC3339)
@@ -448,6 +450,15 @@ These fields are available for SLA queries:
 - `missing(field)`
 - `has(field, value)` (list membership; e.g., dependency)
 - `date(value)` (convert to RFC3339; e.g., `date("yesterday")`)
+- `team(name)` (expand to match `"team:<name>"` or any member listed in
+  `teams/<name>/team.toml` `members`; for use with `assignee`)
+- `me()` (resolve to the current user's identifier; for use with
+  `assignee`. Identity resolution is implementation-defined — e.g.,
+  git config, session, or environment.)
+- `my_team()` (resolve to all teams the current user belongs to, based
+  on `members` in each `team.toml`. Expands to match `"team:<name>"`
+  and all members for every team the user is in. A user may belong to
+  multiple teams.)
 
 ### 12.1.6 Values
 - Strings can be quoted with double quotes, e.g. `"security"`.
@@ -464,8 +475,10 @@ These fields are available for SLA queries:
   `summary ~ "security" AND status.category != done`
 - Tasks assigned to specific people and due this week:
   `assignee IN ["alex@example.com", "jp"] AND due <= 2026-03-22T23:59:59Z`
-- Tasks assigned to the backend team:
-  `assignee = "team:backend"`
+- Tasks assigned to the backend team (awaiting triage):
+  `assignee = "team:backend" AND status.category != done`
+- All open tasks for the backend team (including individual assignments):
+  `assignee = team("backend") AND status.category != done`
 - Tasks depending on a specific file:
   `dependency = "launch/plan"`
 - Unestimated in-progress tasks:
