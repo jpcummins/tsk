@@ -1,3 +1,9 @@
+members = [
+  "Alice Smith <alice@example.com>",
+  "Bob Jones <bob@example.com>",
+  "Carol White <carol@example.com>",
+]
+
 [iteration.status.map]
 todo = { category = "todo", order = 10 }
 planning = { category = "todo", order = 20 }

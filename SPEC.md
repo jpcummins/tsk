@@ -1,6 +1,6 @@
 # TSK Formal Spec (Draft)
 
-Version: 0.4.0
+Version: 0.7.0
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -109,7 +109,7 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 
 ### Optional fields
 - `due` (RFC3339 timestamp)
-- `assignee` (list; email or alphanumeric username tokens)
+- `assignee` (string; a person or team — see **Assignee Semantics**)
 - `dependencies` (canonical paths relative to `tasks/`, without file extensions)
 - `summary` (use Hugo summary behavior)
 - `estimate` (duration tokens like `2h`, `1.5d`)
@@ -120,6 +120,18 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 
 ### Reference Resolution
 - Dependency paths must resolve through redirect stubs.
+
+### Assignee Semantics
+- `assignee` is a single string representing the current owner of a task.
+- A task is assigned to either a person or a team, never both.
+- Person values are an email address or alphanumeric username token
+  (e.g., `"alex@example.com"`, `"jp"`).
+- Team values use the `team:` prefix followed by a team directory name
+  (e.g., `"team:backend"`).
+- The team name in a `team:` value must correspond to a directory under
+  `teams/`.
+- Reassignment (e.g., team triages and assigns to a person) is modeled by
+  updating the `assignee` value.
 
 ### Status Semantics
 - `status` represents the current status when `status_log` is absent.
@@ -134,7 +146,7 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 date: 2026-03-14T09:30:00Z
 updated_at: 2026-03-16T12:00:00Z
 due: 2026-04-01T17:00:00Z
-assignee: ["alex@example.com", "jp"]
+assignee: "alex@example.com"
 dependencies: ["launch/plan", "bootstrap"]
 summary: "Ship CLI MVP"
 estimate: "12h"
@@ -166,6 +178,20 @@ Notes here...
 - Teams are global and live under `teams/`.
 - Each team has a directory at `teams/<team>/`.
 - `teams/<team>/README.md` is optional.
+- Team-level configuration is stored in `teams/<team>/team.toml`.
+
+### Team Members
+- Team members are listed in `team.toml` under the `members` key.
+- `members` is an array of strings in `"First Last <email@example.com>"` format.
+- The `members` field is optional.
+
+### team.toml example
+```toml
+members = [
+  "Alice Smith <alice@example.com>",
+  "Bob Jones <bob@example.com>",
+]
+```
 
 ## 9. Iterations
 - Iterations live under `teams/<team>/iterations/`.
@@ -178,7 +204,7 @@ Notes here...
 ### Iteration Status
 - Iterations use the same base categories (`todo`, `in_progress`, `done`).
 - Iterations have their own configurable status mapping with `order`.
-- Iteration status mapping is defined in `.config.toml` under
+- Iteration status mapping is defined in `team.toml` under
   `[iteration.status.map]`.
 
 ### Required fields
@@ -209,9 +235,10 @@ Goals and notes.
 
 ## 10. Configuration and Inheritance
 - Configuration file format: TOML.
-- Configuration files are named `.config.toml`.
-- Configuration files live in project directories and apply to that directory
-  subtree.
+- Project configuration files are named `.config.toml`.
+- Team configuration files are named `team.toml` and live under `teams/<team>/`.
+- Project configuration files live in project directories and apply to that
+  directory subtree.
 - A global configuration may exist at the repository root (`.config.toml`).
 - When multiple configs apply, the most specific (nearest) config takes
   precedence.
@@ -227,7 +254,7 @@ Goals and notes.
 ### Configuration example
 ```toml
 [defaults]
-assignee = ["jp@example.com"]
+assignee = "jp@example.com"
 status = "up_next"
 estimate = "4h"
 
@@ -373,7 +400,7 @@ These fields are available for SLA queries:
 - Task fields:
   - `task.status` (custom status)
   - `task.status.category` (base category: `todo`, `in_progress`, `done`)
-  - `task.assignee` (matches any assignee value)
+  - `task.assignee` (person or `team:` prefixed team name)
   - `task.due` (RFC3339)
   - `task.date` (RFC3339)
   - `task.updated_at` (RFC3339)
@@ -397,7 +424,7 @@ These fields are available for SLA queries:
 ### 12.1.4.1 Field Type Reference
 - `task.status`: enum (custom status value)
 - `task.status.category`: enum (`todo`, `in_progress`, `done`)
-- `task.assignee`: list of strings
+- `task.assignee`: string (person or `team:` prefixed team name)
 - `task.due`: datetime (RFC3339)
 - `task.date`: datetime (RFC3339)
 - `task.updated_at`: datetime (RFC3339)
@@ -419,7 +446,7 @@ These fields are available for SLA queries:
 ### 12.1.5 Functions
 - `exists(field)`
 - `missing(field)`
-- `has(field, value)` (list membership; e.g., assignee)
+- `has(field, value)` (list membership; e.g., dependency)
 - `date(value)` (convert to RFC3339; e.g., `date("yesterday")`)
 
 ### 12.1.6 Values
@@ -435,8 +462,10 @@ These fields are available for SLA queries:
 ### 12.1.7 Examples
 - All security tasks with a 30-day SLA:
   `summary ~ "security" AND status.category != done`
-- Tasks assigned to a team member and due this week:
+- Tasks assigned to specific people and due this week:
   `assignee IN ["alex@example.com", "jp"] AND due <= 2026-03-22T23:59:59Z`
+- Tasks assigned to the backend team:
+  `assignee = "team:backend"`
 - Tasks depending on a specific file:
   `dependency = "launch/plan"`
 - Unestimated in-progress tasks:
