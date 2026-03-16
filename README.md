@@ -1,18 +1,13 @@
 # tsk
 
 tsk is a fast, developer-first, non-proprietary, file-based project management
-spec. It is intentionally minimal and a bit of a rebellion against the bloat of
+specification. It is intentionally minimal and a bit of a rebellion against the bloat of
 Jira, ClickUp, and Linear. The core idea is simple: tasks and project data live
 in plain text files, tracked in git, with tooling built around a stable, open
 specification. It should scale from a single-developer workflow to a complex
 multi-org setup at a large company.
 
-This repository defines the specification for multiple implementations (CLI,
-web UI, API, and others). The spec is versioned using semantic versioning so
-breaking changes are clearly communicated.
-
-This repo does not contain an implementation. It is for specs, documentation,
-and examples for the task management system.
+This repository defines the specification of the tsk repository, documentation, and examples.  This repo does not contain an implementation. 
 
 The intent is for a tsk repository to live in its own git repo, separate
 from application code, to keep git history clean. This is not required; the
@@ -41,3 +36,7 @@ system is flexible enough to live alongside a codebase in the same repo.
 ## Examples
 - `example/minimal-todo/` shows a minimal solo TODO list.
 - `example/complex-shopping-cart/` shows a multi-team, SLA-tracked project.
+
+## Future Plans
+- A CLI tool to create, update, and delete tasks
+- A web frontend with advanced reporting
