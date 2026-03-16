@@ -1,8 +1,8 @@
 # tsk
 
-tsk is a fast, developer-first, non-proprietary, file-based project management
-specification. It is intentionally minimal and a bit of a rebellion against the bloat of
-Jira, ClickUp, and Linear. This repository defines the specification of the tsk repository and contains documentation and examples.  This repo does not contain an implementation. 
+tsk is a minimal file-based project management
+specification. It is a bit of a rebellion against the bloat of
+Jira, ClickUp, and Linear. This repository defines the specification of a tsk repository and contains documentation and examples.  This repo does not contain an implementation. 
 
 The core idea is simple: 
 
