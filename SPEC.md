@@ -243,7 +243,6 @@ charlie = "charlie@example.com"
 
 ### Optional fields
 - `name`
-- `capacity` (duration tokens like `80h`)
 
 ### Example
 ```markdown
@@ -253,7 +252,6 @@ team: platform
 start: 2026-03-16T00:00:00Z
 end: 2026-03-22T23:59:59Z
 status: in_progress
-capacity: "80h"
 tasks:
   - launch/m2/implement-cli
   - platform/tasks/enable-sso
