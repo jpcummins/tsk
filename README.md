@@ -14,6 +14,11 @@ breaking changes are clearly communicated.
 This repo does not contain an implementation. It is for specs, documentation,
 and examples for the task management system.
 
+## Implementations
+
+- **[tsk-cli](https://github.com/jpcummins/tsk-cli)** - Terminal UI with DSL queries and fuzzy search
+- **[tsk-lib](https://github.com/jpcummins/tsk-lib)** - Go library for parsing and querying tsk repositories
+
 The intent is for task tracking data to live in its own repository, separate
 from application code, to keep git history clean. This is not required; the
 system is flexible enough to live alongside a codebase in the same repo.
