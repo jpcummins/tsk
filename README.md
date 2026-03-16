@@ -73,3 +73,4 @@ system is flexible enough to live alongside a codebase in the same repo. Client 
 ## Future Plans
 - A CLI tool to create, update, and delete tasks
 - A web frontend with advanced reporting
+- Comments
