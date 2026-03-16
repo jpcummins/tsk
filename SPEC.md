@@ -1,6 +1,6 @@
 # tsk spec
 
-Version: 0.12.1
+Version: 1.0.0
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -114,7 +114,7 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 - `estimate` (duration tokens like `2h`, `1.5d`)
 - `status` (custom enum mapped to base categories)
 - `updated_at` (RFC3339 timestamp)
-- `status_log` (ordered list of `{status, at}` transitions)
+- `change_log` (ordered list of `{field, from, to, at}` changes; tracks changes to any header field)
 - `labels` (list of strings; arbitrary tags for categorization)
 - `weight`
 
@@ -145,9 +145,9 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 - Queryable via `has(labels, "value")` for membership checks.
 
 ### Status Semantics
-- `status` represents the current status when `status_log` is absent.
-- If `status_log` is present, the most recent transition defines current status.
-- If `status_log` timestamps are out of order, the most recent timestamp wins.
+- `status` represents the current status when `change_log` is absent.
+- If `change_log` is present, the most recent status change defines current status.
+- If `change_log` timestamps are out of order, the most recent timestamp wins.
 - If `status` is provided but `updated_at` is missing, SLA enforcement is not
   possible for status-based rules.
 
@@ -163,10 +163,10 @@ summary: "Ship CLI MVP"
 estimate: "12h"
 labels: ["capitalizable", "mvp"]
 status: "up_next"
-status_log:
-  - status: todo
-    at: 2026-03-14T09:30:00Z
-  - status: up_next
+change_log:
+  - field: status
+    from: todo
+    to: up_next
     at: 2026-03-15T10:00:00Z
 ---
 Notes here...
@@ -373,8 +373,8 @@ severity = "medium"
 - `date`: use `task.date`.
 - `due`: use `task.due`.
 - `status:<value>`: use the most recent transition into the given status value
-  from `status_log`.
-- If `status_log` is absent, use `updated_at` as the transition time when
+  from `change_log`.
+- If `change_log` is absent, use `updated_at` as the transition time when
   `task.status` matches the requested value.
 - If `status` is set and `updated_at` is missing, status-based SLA timing
   cannot be enforced and the task is skipped for status-based SLA evaluation.
