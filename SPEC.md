@@ -1,6 +1,6 @@
 # tsk spec
 
-Version: 1.2.0
+Version: 1.2.1
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -188,6 +188,7 @@ Notes here...
 ## 8. Teams
 - Teams are global and live under `teams/`.
 - Each team has a directory at `teams/<team>/`.
+- The team identifier follows **Identifier Syntax**.
 - `teams/<team>/README.md` is optional.
 - Team-level configuration is stored in `teams/<team>/team.toml`.
 
@@ -477,7 +478,7 @@ These fields are available for queries:
 - `task.type`: identifier
 - `task.dependency`: list of strings (canonical paths)
 - `task.labels`: list of strings
-- `iteration.team`: string (team directory name)
+- `iteration.team`: identifier (see **Identifier Syntax**)
 - `iteration.status`: enum (custom status value)
 - `iteration.status.category`: enum (`todo`, `in_progress`, `done`)
 - `iteration.start`: datetime (RFC3339)
