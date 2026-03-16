@@ -1,6 +1,6 @@
 # tsk spec
 
-Version: 1.0.0
+Version: 1.1.0
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -62,6 +62,11 @@ It is implementation-agnostic and focused on structure, fields, and semantics.
 - `README.md` does not add a path segment to the canonical identity.
 - Example: `tasks/launch/README.md` resolves to `launch`.
 
+### 2.3 Identifier Syntax
+- A **label** is a lowercase alphanumeric string with `-` allowed. It must match `[a-z0-9][a-z0-9-]*`.
+- A **type** follows the same rules as a label.
+- This identifier format is defined here once and referenced throughout the spec.
+
 ### 2.4 Redirect Stub Files
 - Redirect stubs are the only reference mechanism in the system.
 - When a task is moved, the old path may optionally remain as a stub file. This is an implementation decision.
@@ -115,7 +120,8 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 - `status` (custom enum mapped to base categories)
 - `updated_at` (RFC3339 timestamp)
 - `change_log` (ordered list of `{field, from, to, at}` changes; tracks changes to any header field)
-- `labels` (list of strings; arbitrary tags for categorization)
+- `labels` (list of identifiers; see **Identifier Syntax**)
+- `type` (identifier; see **Identifier Syntax**)
 - `weight`
 
 ### Reference Resolution
@@ -448,6 +454,7 @@ These fields are available for queries:
   - `task.estimate` (duration)
   - `task.path` (canonical path relative to `tasks/`, no file extension)
   - `task.summary`
+  - `task.type` (identifier; see **Identifier Syntax**)
   - `task.dependency` (matches any dependency path)
   - `task.labels` (matches any label value)
 - Iteration fields:
@@ -474,6 +481,7 @@ These fields are available for queries:
 - `task.estimate`: duration
 - `task.path`: string (canonical path relative to `tasks/`)
 - `task.summary`: string
+- `task.type`: identifier
 - `task.dependency`: list of strings (canonical paths)
 - `task.labels`: list of strings
 - `iteration.team`: string (team directory name)

@@ -4,6 +4,7 @@ updated_at: 2026-03-18T15:00:00Z
 status: done
 summary: "Support: payment timeout on checkout"
 estimate: "3h"
+type: bug
 change_log:
   - field: status
     from: todo
