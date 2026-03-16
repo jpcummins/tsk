@@ -51,21 +51,6 @@ system is flexible enough to live alongside a codebase in the same repo. Client 
 - **[tsk-cli](https://github.com/jpcummins/tsk-cli)** - Terminal UI with DSL queries and fuzzy search
 - **[tsk-lib](https://github.com/jpcummins/tsk-lib)** - Go library for parsing and querying tsk repositories
 
-
-## Principles
-- Instantaneous search.
-- Text is the source of truth.
-- Clear specification for humans and AI.
-- Scales from solo dev workflows to large multi-org teams.
-
-## Spec and Versioning
-- The formal spec lives in `SPEC.md`.
-- The spec follows semantic versioning.
-  - Breaking changes require a major version bump.
-  - Backwards-compatible changes require a minor version bump.
-  - Fixes and clarifications require a patch version bump.
- - Canonical task paths are rooted at `tasks/`.
-
 ## Examples
 - `example/minimal-todo/` shows a minimal solo TODO list.
 - `example/complex-shopping-cart/` shows a multi-team, SLA-tracked project.
