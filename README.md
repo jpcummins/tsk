@@ -42,13 +42,13 @@ The primary way to interact with tsk is via the query interface, though, impleme
 path ~ "support/" AND status.category != done
 ```
 
-The intent is for a tsk repository to live in its own git repo, separate
+tsk repositories are intended to live in their own git repo, separate
 from application code, to keep the application's git history clean. This is not required; the
 system is flexible enough to live alongside a codebase in the same repo. Client applications may commit and push changes transparently to the user.
 
 ## Implementations
 
-- **[tsk-cli](https://github.com/jpcummins/tsk-cli)** - Terminal UI with DSL queries and fuzzy search
+- **[tsk-cli](https://github.com/jpcummins/tsk-cli)** - Terminal UI with queries and fuzzy search
 - **[tsk-lib](https://github.com/jpcummins/tsk-lib)** - Go library for parsing and querying tsk repositories
 
 ## Examples
