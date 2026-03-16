@@ -1,6 +1,6 @@
-# TSK Formal Spec (Draft)
+# tsk spec
 
-Version: 0.12.0
+Version: 0.12.1
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -33,7 +33,7 @@ It is implementation-agnostic and focused on structure, fields, and semantics.
 ### 2.1 Canonical Path Normalization
 - Input is the path from `tasks/` to the file or directory.
 - Normalize path separators to `/` and trim leading/trailing `/`.
-- Lowercase the path.
+- Lowercase the path, except for the special `README.md` filename which may be upper or lower case (both are valid).
 - Remove the file extension for canonical paths.
 - Replace spaces with `-` inside each path segment.
 - Remove non-alphanumeric characters within each segment except `-`.
@@ -51,10 +51,11 @@ It is implementation-agnostic and focused on structure, fields, and semantics.
 - If a directory and task file share the same canonical path, the directory
   container takes precedence; implementations should warn.
 - Implementations should warn when on-disk paths include uppercase characters
-  on case-sensitive filesystems.
+  on case-sensitive filesystems, except for `README.md` which may be upper or
+  lower case.
 - If both lowercase and uppercase variants of the same path exist on a
-  case-sensitive filesystem, the lowercase path takes precedence and the
-  uppercase variant is ignored.
+  case-sensitive filesystem (except for `README.md` which allows both), the
+  lowercase path takes precedence and the uppercase variant is ignored.
 
 ### 2.3 README Canonical Path
 - The canonical path for a directory node maps to the directory itself.
