@@ -1,5 +1,5 @@
 ---
-date: 2026-03-17T09:00:00Z
+created_at: 2026-03-17T09:00:00Z
 summary: "Shopping cart feature"
 status: in_progress
 labels: ["capitalizable"]

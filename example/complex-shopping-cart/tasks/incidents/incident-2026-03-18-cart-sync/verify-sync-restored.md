@@ -1,5 +1,5 @@
 ---
-date: 2026-03-18T09:15:00Z
+created_at: 2026-03-18T09:15:00Z
 assignee: "alice"
 status: todo
 summary: "Verify cart sync restored for active sessions"

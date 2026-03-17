@@ -1,5 +1,5 @@
 ---
-date: 2026-03-19T10:00:00Z
+created_at: 2026-03-19T10:00:00Z
 status: todo
 dependencies: ["shopping-cart/frontend/cart-ui-shell"]
 summary: "Promo code input"

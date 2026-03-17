@@ -1,5 +1,5 @@
 ---
-date: 2026-03-14T13:00:00Z
+created_at: 2026-03-14T13:00:00Z
 status: todo
 dependencies: ["todo-app/initialize-project"]
 summary: "Persist todos between sessions"

@@ -109,7 +109,7 @@ redirect_to: platform/tasks/enable-sso
 Tasks are the atomic unit. A task is a Markdown file with front matter.
 
 ### Required fields
-- `date` (RFC3339 timestamp)
+- `created_at` (RFC3339 timestamp)
 
 ### Optional fields
 - `due` (RFC3339 timestamp)
@@ -156,7 +156,7 @@ Tasks are the atomic unit. A task is a Markdown file with front matter.
 ### Example
 ```markdown
 ---
-date: 2026-03-14T09:30:00Z
+created_at: 2026-03-14T09:30:00Z
 updated_at: 2026-03-16T12:00:00Z
 due: 2026-04-01T17:00:00Z
 assignee: "alex@example.com"
@@ -364,7 +364,7 @@ id = "security-30d"
 name = "Security fixes in 30 days"
 query = 'task.summary ~ "security"'
 target = "30d"
-start = "date"
+start = "status:todo"
 stop = "status:done"
 severity = "high"
 
@@ -388,12 +388,11 @@ severity = "medium"
 - `target` (duration; see **Duration Format**): allowed time window.
 - `warn_at` (duration; see **Duration Format**): optional. If set, the SLA becomes `at_risk` when
   elapsed time exceeds this threshold. Must be >= 0 and <= `target`.
-- `start` (string): start event (`date`, `due`, `status:<value>`).
+- `start` (string): start event (`due`, `status:<value>`).
 - `stop` (string): stop event (`status:<value>` or `due`).
 - `severity` (identifier; see **Identifier Syntax**): reporting label.
 
 #### SLA Event Types
-- `date`: use `task.date`.
 - `due`: use `task.due`.
 - `status:<value>`: use the most recent transition into the given status value
   from `change_log`.
@@ -474,7 +473,7 @@ These fields are available for queries:
   - `task.status.category` (base category: `todo`, `in_progress`, `done`)
   - `task.assignee` (person or `team:` prefixed team name)
   - `task.due` (RFC3339)
-  - `task.date` (RFC3339)
+  - `task.created_at` (RFC3339)
   - `task.updated_at` (RFC3339)
   - `task.estimate` (duration; see **Duration Format**)
   - `task.path` (canonical path relative to `tasks/`, no file extension)
@@ -501,7 +500,7 @@ These fields are available for queries:
 - `task.status.category`: enum (`todo`, `in_progress`, `done`)
 - `task.assignee`: string (person or `team:` prefixed team name)
 - `task.due`: datetime (RFC3339)
-- `task.date`: datetime (RFC3339)
+- `task.created_at`: datetime (RFC3339)
 - `task.updated_at`: datetime (RFC3339)
 - `task.estimate`: duration (see **Duration Format**)
 - `task.path`: string (canonical path relative to `tasks/`)

@@ -1,5 +1,5 @@
 ---
-date: 2026-03-14T09:00:00Z
+created_at: 2026-03-14T09:00:00Z
 status: done
 summary: "Initialize TODO app scaffold"
 estimate: "2h"

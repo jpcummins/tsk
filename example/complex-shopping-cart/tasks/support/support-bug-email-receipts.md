@@ -1,5 +1,5 @@
 ---
-date: 2026-03-18T10:00:00Z
+created_at: 2026-03-18T10:00:00Z
 updated_at: 2026-03-18T10:30:00Z
 status: todo
 summary: "Support: missing receipt emails"

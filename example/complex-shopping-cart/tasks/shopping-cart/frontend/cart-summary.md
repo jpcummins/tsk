@@ -1,5 +1,5 @@
 ---
-date: 2026-03-19T11:00:00Z
+created_at: 2026-03-19T11:00:00Z
 updated_at: 2026-03-21T14:00:00Z
 status: in_progress
 dependencies: ["shopping-cart/backend/pricing-engine"]

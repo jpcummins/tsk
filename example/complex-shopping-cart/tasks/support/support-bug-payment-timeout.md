@@ -1,5 +1,5 @@
 ---
-date: 2026-03-18T08:00:00Z
+created_at: 2026-03-18T08:00:00Z
 updated_at: 2026-03-18T15:00:00Z
 status: done
 summary: "Support: payment timeout on checkout"
