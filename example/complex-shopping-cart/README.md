@@ -17,7 +17,6 @@ dependencies, iterations, and SLA-tracked support/incident work.
 ## Notes
 - Tasks are referenced by canonical paths relative to `tasks/`.
 - Backend tasks use custom task statuses (see `tasks/shopping-cart/backend/config.toml`).
-- Frontend iterations use custom iteration statuses (see `teams/frontend/team.toml`).
 - Support and incident tickets live outside the core project and are tracked with SLAs.
 
 ## Useful Search Queries
@@ -156,16 +155,15 @@ assignee = my_team() AND status.category != done
 
 ### Capitalizable tasks
 
-The `shopping-cart/README.md` has `labels: ["capitalizable"]`. All
-subtasks inherit this label automatically (labels use union semantics).
-Incident tasks are *not* capitalizable — they have the `incident` label
+Each task explicitly declares its labels. The shopping-cart tasks have
+`labels: ["capitalizable"]`. Incident tasks have `labels: ["incident"]`
 instead. This query finds all capitalizable tasks and their estimates:
 
 ```
 has(labels, "capitalizable")
 ```
 
-| Task | Status | Estimate | Labels (effective) |
+| Task | Status | Estimate | Labels |
 |---|---|---|---|
 | `shopping-cart` | in_progress | — | capitalizable |
 | `shopping-cart/backend/cart-service-endpoints` | dev | 8h | capitalizable |
@@ -177,15 +175,10 @@ has(labels, "capitalizable")
 | `shopping-cart/frontend/cart-summary` | todo | 5h | capitalizable |
 | `shopping-cart/billing/tax-calculation` | in_progress | 7h | capitalizable |
 | `shopping-cart/billing/invoice-generation` | todo | 6h | capitalizable |
-| `shopping-cart/billing/refund-flow` | todo | 8h | capitalizable, not-capitalizable |
+| `shopping-cart/billing/refund-flow` | todo | 8h | not-capitalizable |
 | `shopping-cart/checkout/checkout-flow` | todo | 9h | capitalizable |
 | `shopping-cart/checkout/payment-methods` | todo | 6h | capitalizable |
 | `shopping-cart/checkout/order-confirmation` | todo | 4h | capitalizable |
-
-Note: most subtasks inherit `capitalizable` from the parent
-`shopping-cart/README.md` without declaring any labels themselves.
-The `refund-flow` task explicitly adds `not-capitalizable` — since
-labels use union semantics, it carries both labels.
 
 ### Capitalizable tasks (excluding opt-outs)
 
@@ -196,7 +189,7 @@ labeled `not-capitalizable`. Using `NOT` to exclude it:
 has(labels, "capitalizable") AND NOT has(labels, "not-capitalizable")
 ```
 
-| Task | Status | Estimate | Labels (effective) |
+| Task | Status | Estimate | Labels |
 |---|---|---|---|
 | `shopping-cart` | in_progress | — | capitalizable |
 | `shopping-cart/backend/cart-service-endpoints` | dev | 8h | capitalizable |
@@ -212,9 +205,7 @@ has(labels, "capitalizable") AND NOT has(labels, "not-capitalizable")
 | `shopping-cart/checkout/payment-methods` | todo | 6h | capitalizable |
 | `shopping-cart/checkout/order-confirmation` | todo | 4h | capitalizable |
 
-The `refund-flow` task is excluded even though it inherits
-`capitalizable` from the parent — the `NOT` filter handles this at
-query time without needing to remove the inherited label.
+The `refund-flow` task is excluded because it has `not-capitalizable` instead of `capitalizable`.
 
 ## Summary
 - Shopping cart feature work spans four teams with cross-team dependencies.

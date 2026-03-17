@@ -5,5 +5,6 @@ due: 2026-03-20T17:00:00Z
 status: in_progress
 summary: "Cart UI shell"
 estimate: "6h"
+labels: ["capitalizable"]
 ---
 Build the base layout for the cart page.

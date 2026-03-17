@@ -10,6 +10,7 @@ The core idea is simple:
 * Tasks belong to projects, which are directories with an optional readme.md
 
 A simple tsk repository looks like this:
+
 ```
 /
   config.toml
@@ -43,8 +44,7 @@ path ~ "support/" AND status.category != done
 ```
 
 tsk repositories are intended to live in their own git repo, separate
-from application code, to keep the application's git history clean. This is not required; the
-system is flexible enough to live alongside a codebase in the same repo. Client applications may commit and push changes transparently to the user.
+from application code, to keep the application's git history clean. This is not required; the system is flexible enough to live alongside a codebase in the same repo. Client applications may commit and push changes transparently to the user.
 
 ## Implementations
 
@@ -52,10 +52,17 @@ system is flexible enough to live alongside a codebase in the same repo. Client 
 - **[tsk-lib](https://github.com/jpcummins/tsk-lib)** - Go library for parsing and querying tsk repositories
 
 ## Examples
+
 - [example/minimal-todo](example/minimal-todo/) shows a minimal solo TODO list.
 - [example/complex-shopping-cart](example/complex-shopping-cart/) shows a multi-team, SLA-tracked project.
 
+## Docs
+
+- [docs/README.md](docs/README.md) - Guide to the human-friendly documentation.
+- [SPEC.md](SPEC.md) - Formal normative specification.
+
 ## Future Plans
+
 - A CLI tool to create, update, and delete tasks
 - A web frontend with advanced reporting
 - Comments

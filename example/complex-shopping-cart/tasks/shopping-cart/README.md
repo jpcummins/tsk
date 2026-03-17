@@ -6,5 +6,5 @@ labels: ["capitalizable"]
 type: epic
 ---
 New shopping cart feature spanning backend, frontend, billing, and checkout.
-All subtasks inherit the `capitalizable` label for cost capitalization
-reporting.
+Each subtask explicitly declares `labels: ["capitalizable"]` for cost
+capitalization reporting.

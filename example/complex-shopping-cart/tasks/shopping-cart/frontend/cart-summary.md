@@ -5,6 +5,7 @@ status: in_progress
 dependencies: ["shopping-cart/backend/pricing-engine"]
 summary: "Cart summary totals"
 estimate: "5h"
+labels: ["capitalizable"]
 change_log:
   - field: status
     from: todo

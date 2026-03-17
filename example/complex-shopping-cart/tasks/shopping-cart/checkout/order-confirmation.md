@@ -4,5 +4,6 @@ status: todo
 dependencies: ["shopping-cart/checkout/checkout-flow"]
 summary: "Order confirmation view"
 estimate: "4h"
+labels: ["capitalizable"]
 ---
 Show order confirmation details after purchase.

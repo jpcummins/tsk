@@ -5,5 +5,6 @@ status: in_progress
 dependencies: ["shopping-cart/frontend/cart-ui-shell"]
 summary: "Quantity controls"
 estimate: "4h"
+labels: ["capitalizable"]
 ---
 Allow users to increase or decrease item quantities.

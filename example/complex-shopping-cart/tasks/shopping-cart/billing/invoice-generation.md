@@ -4,5 +4,6 @@ status: todo
 dependencies: ["shopping-cart/checkout/checkout-flow"]
 summary: "Invoice generation"
 estimate: "6h"
+labels: ["capitalizable"]
 ---
 Generate invoices after purchase.

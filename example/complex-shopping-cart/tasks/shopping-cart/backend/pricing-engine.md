@@ -5,6 +5,7 @@ status: in_progress
 assignee: "sarah"
 summary: "Pricing engine"
 estimate: "10h"
+labels: ["capitalizable"]
 change_log:
   - field: status
     from: queued
