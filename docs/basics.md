@@ -39,22 +39,20 @@ redirect_to: platform/tasks/enable-sso
 
 ## Task Front Matter
 
-Required task field:
-
-- `created_at` (RFC3339 timestamp)
-
-Common optional fields:
-
-- `status`
-- `summary`
-- `assignee`
-- `dependencies`
-- `labels`
-- `type`
-- `estimate`
-- `updated_at`
-- `due`
-- `change_log`
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `created_at` | datetime | yes | RFC3339 timestamp |
+| `due` | datetime | no | RFC3339 timestamp |
+| `assignee` | string | no | Person or team (e.g., `"alice"`, `"team:backend"`) |
+| `dependencies` | list | no | Canonical paths to predecessor tasks |
+| `summary` | string | no | Short task description |
+| `estimate` | duration | no | Estimated effort (e.g., `2h`, `1.5d`) |
+| `status` | enum | no | Custom status mapped to base category |
+| `updated_at` | datetime | no | RFC3339 timestamp |
+| `change_log` | list | no | List of `{field, from, to, at}` changes |
+| `labels` | list | no | List of label identifiers |
+| `type` | identifier | no | Task type identifier |
+| `weight` | number | no | Ordering weight (lower sorts first) |
 
 ## Identifier Rules
 
