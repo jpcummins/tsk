@@ -1,6 +1,6 @@
 # tsk spec
 
-Version: 1.1.0
+Version: 1.1.1
 
 ## Versioning
 - The spec follows semantic versioning.
@@ -455,6 +455,22 @@ saved views across the system.
 - Non-comparable predicates (e.g., `status < "foo"`) are invalid and must error.
 - Predicates against missing fields are no-ops and evaluate to false.
 
+### 13.3.2 Cross-Entity Query Rules
+- Queries may reference fields from different entity namespaces (`task.*`,
+  `iteration.*`, `sla.*`).
+- OR across entity namespaces is invalid and must error. OR is only
+  permitted between predicates within the same namespace.
+  - Valid: `task.status = done OR task.status = review`
+  - Valid: `iteration.team = "backend" OR iteration.team = "frontend"`
+  - Invalid: `task.status = done OR iteration.status = in_progress`
+- AND across entity namespaces is allowed. This is the only way to
+  combine predicates from different namespaces.
+- NOT applied to an `iteration.*` predicate negates the existence check:
+  it means "no matching iteration exists for this task," not "there
+  exists an iteration where the predicate is false."
+  - `NOT iteration.team = "backend" AND task.status.category = todo`
+    returns todo tasks that are not in any backend iteration.
+
 ### 13.4 Fields
 These fields are available for queries:
 - Fields may be namespaced by entity: `task.<field>` or `iteration.<field>`.
@@ -467,7 +483,11 @@ These fields are available for queries:
   returns tasks that belong to at least one iteration satisfying the
   iteration predicates. The iteration's `tasks` list defines membership.
   Task predicates (including `sla.*`) are then applied to filter the
-  matching tasks.
+  matching tasks. Tasks not belonging to any iteration are excluded when
+  iteration predicates are present.
+- When a query references only `iteration.*` fields (no `task.*` or
+  `sla.*` fields), it returns all tasks belonging to at least one
+  matching iteration.
 - Task fields:
   - `task.status` (custom status)
   - `task.status.category` (base category: `todo`, `in_progress`, `done`)
