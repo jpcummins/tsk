@@ -479,7 +479,7 @@ These fields are available for queries:
   - `task.path` (canonical path relative to `tasks/`, no file extension)
   - `task.summary`
   - `task.type` (identifier; see **Identifier Syntax**)
-  - `task.dependency` (matches any dependency path)
+  - `task.dependencies` (matches any dependency path)
   - `task.labels` (matches any label value)
 - Iteration fields:
   - `iteration.team` (identifier; see **Identifier Syntax**)
@@ -506,7 +506,7 @@ These fields are available for queries:
 - `task.path`: string (canonical path relative to `tasks/`)
 - `task.summary`: string
 - `task.type`: identifier
-- `task.dependency`: list of strings (canonical paths)
+- `task.dependencies`: list of strings (canonical paths)
 - `task.labels`: list of strings
 - `iteration.team`: identifier (see **Identifier Syntax**)
 - `iteration.status`: enum (custom status value)
@@ -523,7 +523,7 @@ These fields are available for queries:
 ### 13.5 Functions
 - `exists(field)`
 - `missing(field)`
-- `has(field, value)` (list membership; e.g., dependency)
+- `has(field, value)` (list membership; e.g., dependencies, labels)
 - `date(value)` (convert to RFC3339; e.g., `date("yesterday")`)
 - `team(name)` (expand to match `"team:<name>"` or any member listed in
   `teams/<name>/team.toml` `members`; for use with `assignee`)
