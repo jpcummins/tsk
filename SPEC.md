@@ -293,6 +293,7 @@ Goals and notes.
   `assignee = true` is set in `[inherit]`, then `assignee` is inherited by
   subtasks but `priority` is not.
 - Status enums are configured here and must map to base categories.
+- If a base category is not explicitly defined in the status map, its order defaults to 0.
 - Iteration status enums are configured separately and must map to base categories.
 
 ### Configuration example
