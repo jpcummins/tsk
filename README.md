@@ -1,6 +1,6 @@
 # tsk
 
-tsk is a minimal file-based project management specification designed for teams large and small.
+tsk is a minimal markdown-based project management system designed for teams large and small.
 
 This repository defines the specification of a tsk repository and contains documentation and examples.
 
