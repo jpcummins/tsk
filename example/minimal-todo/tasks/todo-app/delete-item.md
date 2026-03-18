@@ -5,4 +5,5 @@ dependencies: ["todo-app/add-item"]
 summary: "Delete todo items"
 estimate: "2h"
 ---
+
 Remove items from the list.

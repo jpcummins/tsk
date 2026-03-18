@@ -6,5 +6,6 @@ status: done
 summary: "Triage latency source and identify bottleneck"
 estimate: "1h"
 ---
+
 Check APM dashboards, identify slow endpoints, and trace back to
 database or service bottleneck.

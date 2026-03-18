@@ -7,5 +7,6 @@ labels: ["incident"]
 summary: "Incident: cart sync regression"
 estimate: "4h"
 ---
+
 Cart contents not syncing between devices for logged-in users.
 Regression introduced in latest backend deploy.

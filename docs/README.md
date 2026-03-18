@@ -21,4 +21,4 @@ This directory contains human-friendly guides for the tsk format.
 - [`example/minimal-todo/`](../example/minimal-todo/) - Minimal setup for a solo workflow.
 - [`example/complex-shopping-cart/`](../example/complex-shopping-cart/) - Multi-team project with iterations and SLA rules.
 
-# 
+#

@@ -10,6 +10,7 @@ created_at: 2026-03-17T10:00:00Z
 summary: Build user login
 status: todo
 ---
+
 Implement OAuth2 login flow.
 ```
 
@@ -54,9 +55,11 @@ Tasks can be assigned to a person or a team:
 
 ```markdown
 # Assign to a specific person
+
 assignee: "alice"
 
 # Assign to a team (awaiting triage)
+
 assignee: "team:backend"
 ```
 
@@ -75,7 +78,7 @@ summary: Deploy the application
 ---
 ```
 
-Dependencies use canonical paths. A task cannot be considered complete until its dependencies are complete.
+Dependencies use canonical paths.
 
 ### Redirect Stubs
 
@@ -111,6 +114,7 @@ created_at: 2026-03-17T10:00:00Z
 summary: Build user login
 status: todo
 ---
+
 Implement OAuth2 login flow.
 ```
 
@@ -126,5 +130,6 @@ dependencies:
 summary: Create frontend login page
 assignee: "team:frontend"
 ---
+
 Wire up the login form to the API.
 ```

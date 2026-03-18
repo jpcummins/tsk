@@ -22,53 +22,64 @@ tsk search uses a DSL for filtering tasks, iterations, and SLA results.
 
 ## Useful Functions
 
-| Function            | Description                       |
-| ------------------- | --------------------------------- |
-| `exists(field)`     | True if field is present          |
-| `missing(field)`    | True if field is absent           |
-| `has(field, value)` | True if list field contains value |
-| `date(value)`       | Convert to RFC3339 (see [basics.md](basics.md#duration-rules)) |
-| `team(name)`        | Expand to team members            |
-| `me()`              | Current user identifier           |
-| `my_team()`         | All teams current user belongs to |
+| Function            | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| `exists(field)`     | True if field is present                                       |
+| `missing(field)`    | True if field is absent                                        |
+| `has(field, value)` | True if list field contains value                              |
+| `date(value)`       | Convert to RFC3339 (see [Dates and values](#dates-and-values)) |
+| `team(name)`        | Expand to team members                                         |
+| `me()`              | Current user identifier                                        |
+| `my_team()`         | All teams current user belongs to                              |
+
+## Dates and Values
+
+- Dates are RFC3339 timestamps, e.g. `2026-04-01T17:00:00Z`.
+- Use the `date()` function to convert relative expressions to RFC3339:
+  - `date("today")` — start of today (local time)
+  - `date("yesterday")` — start of yesterday
+  - `date("-7d")` — 7 days ago
+  - `date("+2w")` — 2 weeks from now
+- Duration values like `2h` or `1.5d` can be used with ordering operators.
+- Strings should be double-quoted.
 
 ## Field Reference
 
 ### Task Fields
 
-| Field             | Type       | Description                                     |
-| ----------------- | ---------- | ----------------------------------------------- |
-| `status`          | enum       | Custom status value                             |
-| `status.category` | enum       | Base category: `todo`, `in_progress`, or `done` |
-| `assignee`        | string     | Person or `team:` prefixed team name            |
-| `due`             | datetime   | RFC3339 timestamp                               |
-| `created_at`      | datetime   | RFC3339 timestamp                               |
-| `updated_at`      | datetime   | RFC3339 timestamp                               |
-| `estimate`        | [duration](basics.md#duration-rules) | Estimated effort (e.g., `2h`, `1.5d`) |
-| `path`            | string     | Canonical path relative to `tasks/`             |
-| `summary`         | string     | Task description                                |
-| `type`            | [identifier](basics.md#identifier-rules) | Task type identifier |
-| `labels`          | list       | List of label identifiers                       |
-| `dependencies`    | list       | List of [canonical paths](basics.md#canonical-paths) |
+| Field             | Type                                     | Description                                          |
+| ----------------- | ---------------------------------------- | ---------------------------------------------------- |
+| `status`          | enum                                     | Custom status value                                  |
+| `status.category` | enum                                     | Base category: `todo`, `in_progress`, or `done`      |
+| `assignee`        | string                                   | Person or `team:` prefixed team name                 |
+| `due`             | datetime                                 | RFC3339 timestamp                                    |
+| `created_at`      | datetime                                 | RFC3339 timestamp                                    |
+| `updated_at`      | datetime                                 | RFC3339 timestamp                                    |
+| `estimate`        | [duration](basics.md#duration-rules)     | Estimated effort (e.g., `2h`, `1.5d`)                |
+| `path`            | string                                   | Canonical path relative to `tasks/`                  |
+| `summary`         | string                                   | Task description                                     |
+| `type`            | [identifier](basics.md#identifier-rules) | Task type identifier                                 |
+| `labels`          | list                                     | List of label identifiers                            |
+| `dependencies`    | list                                     | List of [canonical paths](basics.md#canonical-paths) |
 
 ### Iteration Fields
 
-| Field             | Type       | Description                              |
-| ----------------- | ---------- | ---------------------------------------- |
-| `iteration.id`    | string     | Derived identifier (`<team>/<filename>`, see [iterations.md](iterations.md#iteration-id)) |
-| `iteration.team`  | [identifier](basics.md#identifier-rules) | Team identifier |
-| `iteration.start` | datetime   | RFC3339 timestamp                        |
-| `iteration.end`   | datetime   | RFC3339 timestamp                        |
+| Field             | Type                                     | Description                                                                               |
+| ----------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `iteration.id`    | string                                   | Derived identifier (`<team>/<filename>`, see [iterations.md](iterations.md#iteration-id)) |
+| `iteration.team`  | [identifier](basics.md#identifier-rules) | Team identifier                                                                           |
+| `iteration.start` | datetime                                 | RFC3339 timestamp                                                                         |
+| `iteration.end`   | datetime                                 | RFC3339 timestamp                                                                         |
 
 ### SLA Fields
 
-| Field           | Type     | Description                    |
-| --------------- | -------- | ------------------------------ |
-| `sla.id`        | string   | SLA rule id                    |
-| `sla.status`    | enum     | `ok`, `at_risk`, or `breached` |
-| `sla.target`    | [duration](basics.md#duration-rules) | Target duration |
-| `sla.elapsed`   | [duration](basics.md#duration-rules) | Elapsed time |
-| `sla.remaining` | [duration](basics.md#duration-rules) | Remaining time |
+| Field           | Type                                 | Description                    |
+| --------------- | ------------------------------------ | ------------------------------ |
+| `sla.id`        | string                               | SLA rule id                    |
+| `sla.status`    | enum                                 | `ok`, `at_risk`, or `breached` |
+| `sla.target`    | [duration](basics.md#duration-rules) | Target duration                |
+| `sla.elapsed`   | [duration](basics.md#duration-rules) | Elapsed time                   |
+| `sla.remaining` | [duration](basics.md#duration-rules) | Remaining time                 |
 
 ## Examples
 

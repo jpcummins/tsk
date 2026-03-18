@@ -5,4 +5,5 @@ dependencies: ["todo-app/initialize-project"]
 summary: "Add new todo items"
 estimate: "4h"
 ---
+
 Allow users to add a new item to the list.

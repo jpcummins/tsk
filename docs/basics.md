@@ -4,7 +4,7 @@ This guide explains the core tsk model.
 
 ## Core Idea
 
-- [Tasks](tasks.md) are Markdown files with front matter. 
+- [Tasks](tasks.md) are Markdown files with front matter.
 - [Projects](projects.md) are directories. A project can have a `README.md` that represents the project itself.
 - Tasks and projects live under `tasks/`.
 
@@ -40,6 +40,7 @@ labels: ["priority"]
 due: 2026-03-20T17:00:00Z
 estimate: "4h"
 ---
+
 Configure GitHub Actions for automated testing and deployment.
 ```
 
@@ -56,8 +57,6 @@ assignee = me() AND status.category != done
 ```
 
 See [Search](search.md) for the full query language.
-
- 
 
 ## What's Next
 

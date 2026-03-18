@@ -6,4 +6,5 @@ summary: "Order confirmation view"
 estimate: "4h"
 labels: ["capitalizable"]
 ---
+
 Show order confirmation details after purchase.

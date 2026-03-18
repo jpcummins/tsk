@@ -6,5 +6,6 @@ status: in_progress
 summary: "Scale checkout service and add read replicas"
 estimate: "2h"
 ---
+
 Increase replica count for checkout service and add database read
 replicas to handle the traffic spike.

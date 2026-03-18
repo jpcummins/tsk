@@ -16,4 +16,5 @@ change_log:
     to: "sarah@example.com"
     at: 2026-03-20T09:00:00Z
 ---
+
 Compute pricing, discounts, and tax inputs.

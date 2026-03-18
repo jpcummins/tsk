@@ -28,11 +28,11 @@ Use the body of the file for descriptive text.
 
 ## Fields
 
-| Field   | Type       | Description                           |
-| ------- | ---------- | ------------------------------------- |
-| `start` | RFC3339    | Start of the iteration time window.   |
-| `end`   | RFC3339    | End of the iteration time window.     |
-| `tasks` | list       | Ordered list of canonical task paths. |
+| Field   | Type    | Description                           |
+| ------- | ------- | ------------------------------------- |
+| `start` | RFC3339 | Start of the iteration time window.   |
+| `end`   | RFC3339 | End of the iteration time window.     |
+| `tasks` | list    | Ordered list of canonical task paths. |
 
 ## Example
 
@@ -44,5 +44,6 @@ tasks:
   - launch/m2/implement-cli
   - platform/tasks/enable-sso
 ---
+
 Let's ship SSO!
 ```

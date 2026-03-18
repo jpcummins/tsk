@@ -2,12 +2,12 @@
 
 tsk is a minimal file-based project management
 specification. It is a bit of a rebellion against the bloat of
-Jira, ClickUp, and Linear. This repository defines the specification of a tsk repository and contains documentation and examples.  This repo does not contain an implementation. 
+Jira, ClickUp, and Linear. This repository defines the specification of a tsk repository and contains documentation and examples. This repo does not contain an implementation.
 
-The core idea is simple: 
+The core idea is simple:
 
-* Tasks are markdown files
-* Tasks belong to projects, which are directories with an optional readme.md
+- Tasks are markdown files
+- Tasks belong to projects, which are directories with an optional readme.md
 
 A simple tsk repository looks like this:
 
@@ -33,9 +33,9 @@ A simple tsk repository looks like this:
 
 Optionally, you can add additional functionality (see [shopping cart example](example/complex-shopping-cart/)):
 
-* [teams](docs/teams.md)
-* [iterations](docs/iterations.md)
-* [SLAs](docs/sla.md)
+- [teams](docs/teams.md)
+- [iterations](docs/iterations.md)
+- [SLAs](docs/sla.md)
 
 The primary way to interact with tsk is via the [query interface](docs/search.md), though, implementations are free to abstract this away to make a clean UI for non-technical users. For example, to find all open bugs in the `support` project:
 

@@ -7,4 +7,5 @@ summary: "Quantity controls"
 estimate: "4h"
 labels: ["capitalizable"]
 ---
+
 Allow users to increase or decrease item quantities.

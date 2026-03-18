@@ -19,4 +19,5 @@ change_log:
     to: done
     at: 2026-03-18T15:00:00Z
 ---
+
 Investigate and fix payment timeouts reported by support.

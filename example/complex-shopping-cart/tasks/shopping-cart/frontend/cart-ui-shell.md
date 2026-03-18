@@ -7,4 +7,5 @@ summary: "Cart UI shell"
 estimate: "6h"
 labels: ["capitalizable"]
 ---
+
 Build the base layout for the cart page.

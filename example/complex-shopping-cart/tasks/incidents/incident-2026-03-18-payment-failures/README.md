@@ -8,5 +8,6 @@ summary: "Incident: payment failures"
 estimate: "6h"
 type: epic
 ---
+
 Payment provider returning elevated error rates starting 07:45 UTC.
 Approximately 12% of checkout attempts failing at payment step.

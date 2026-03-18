@@ -6,4 +6,5 @@ summary: "Support: missing receipt emails"
 estimate: "2h"
 type: bug
 ---
+
 Restore receipt email delivery for completed orders.

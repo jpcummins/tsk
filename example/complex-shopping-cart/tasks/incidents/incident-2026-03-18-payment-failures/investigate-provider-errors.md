@@ -7,5 +7,6 @@ status: done
 summary: "Investigate payment provider error responses"
 estimate: "1h"
 ---
+
 Pull logs from payment gateway, correlate with failed checkout attempts,
 and identify root cause.

@@ -6,4 +6,5 @@ summary: "Support: cart duplicates items"
 estimate: "4h"
 type: bug
 ---
+
 Fix duplicate items appearing in the cart for some users.

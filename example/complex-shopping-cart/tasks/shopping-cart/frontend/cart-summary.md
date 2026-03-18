@@ -12,4 +12,5 @@ change_log:
     to: in_progress
     at: 2026-03-21T14:00:00Z
 ---
+
 Display subtotal, discounts, tax, and total.

@@ -7,6 +7,7 @@ labels: ["incident"]
 summary: "Incident: elevated API latency"
 estimate: "5h"
 ---
+
 P95 API latency spiked to 1200ms (normal baseline ~200ms).
 Checkout flow most impacted. Correlates with increased traffic from
 marketing campaign launch.

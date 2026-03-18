@@ -5,4 +5,5 @@ dependencies: ["todo-app/initialize-project"]
 summary: "Persist todos between sessions"
 estimate: "5h"
 ---
+
 Store and load todo items from local storage.

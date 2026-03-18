@@ -20,16 +20,16 @@ severity = "high"
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `id` | [identifier](basics.md#identifier-rules) | yes | Unique rule identifier |
-| `name` | string | yes | Human-readable rule name |
-| `query` | string | yes | DSL expression to select matching tasks |
-| `target` | [duration](basics.md#duration-rules) | yes | Breach threshold duration |
-| `warn_at` | [duration](basics.md#duration-rules) | no | At-risk threshold duration |
-| `start` | string | yes | Start event (`due` or `status:<value>`) |
-| `stop` | string | yes | Stop event (`due` or `status:<value>`) |
-| `severity` | [identifier](basics.md#identifier-rules) | yes | Reporting label identifier |
+| Field      | Type                                     | Required | Description                             |
+| ---------- | ---------------------------------------- | -------- | --------------------------------------- |
+| `id`       | [identifier](basics.md#identifier-rules) | yes      | Unique rule identifier                  |
+| `name`     | string                                   | yes      | Human-readable rule name                |
+| `query`    | string                                   | yes      | DSL expression to select matching tasks |
+| `target`   | [duration](basics.md#duration-rules)     | yes      | Breach threshold duration               |
+| `warn_at`  | [duration](basics.md#duration-rules)     | no       | At-risk threshold duration              |
+| `start`    | string                                   | yes      | Start event (`due` or `status:<value>`) |
+| `stop`     | string                                   | yes      | Stop event (`due` or `status:<value>`)  |
+| `severity` | [identifier](basics.md#identifier-rules) | yes      | Reporting label identifier              |
 
 ## Status Outcomes
 

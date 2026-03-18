@@ -6,4 +6,5 @@ status: in_progress
 summary: "Fix session merge logic in cart service"
 estimate: "2h"
 ---
+
 Patch the session merge path that was broken by the schema migration.

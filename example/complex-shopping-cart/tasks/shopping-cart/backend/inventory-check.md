@@ -5,4 +5,5 @@ summary: "Inventory availability check"
 estimate: "6h"
 labels: ["capitalizable"]
 ---
+
 Ensure items are in stock before checkout.

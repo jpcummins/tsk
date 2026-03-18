@@ -184,6 +184,7 @@ change_log:
     to: up_next
     at: 2026-03-15T10:00:00Z
 ---
+
 Notes here...
 ```
 
@@ -271,6 +272,7 @@ tasks:
   - launch/m2/implement-cli
   - platform/tasks/enable-sso
 ---
+
 Goals and this iteration.
 ```
 

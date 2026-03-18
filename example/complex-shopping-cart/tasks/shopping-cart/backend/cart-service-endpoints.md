@@ -6,4 +6,5 @@ summary: "Cart service endpoints"
 estimate: "8h"
 labels: ["capitalizable"]
 ---
+
 Create CRUD endpoints for cart operations.

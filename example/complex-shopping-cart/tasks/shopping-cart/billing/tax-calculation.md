@@ -6,4 +6,5 @@ summary: "Tax calculation"
 estimate: "7h"
 labels: ["capitalizable"]
 ---
+
 Compute tax for cart totals.
